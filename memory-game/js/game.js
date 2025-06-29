@@ -24,14 +24,36 @@ const createElement = (tag, className) => {
 let firstCard = '';
 let secondCard = '';
 
-const checkEndGame = () => {
-  const disabledCards = document.querySelectorAll('.disabled-card');
 
-  if (disabledCards.length === 20) {
-    clearInterval(this.loop);
-    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}`);
-  }
-}
+// Obtenha as referências para os novos elementos HTML
+const endGameScreen = document.querySelector('.end-game-screen');
+const playerNameDisplay = document.getElementById('player-name-display');
+const finalTimeDisplay = document.getElementById('final-time-display');
+const restartButton = document.getElementById('restart-button');
+
+
+
+const checkEndGame = () => {
+    const disabledCards = document.querySelectorAll('.disabled-card');
+
+    if (disabledCards.length === 20) { 
+        clearInterval(this.loop); 
+
+        
+        playerNameDisplay.innerHTML = spanPlayer.innerHTML; 
+        finalTimeDisplay.innerHTML = timer.innerHTML; 
+
+        
+        endGameScreen.style.display = 'flex'; 
+
+        
+        restartButton.addEventListener('click', () => {
+            
+            window.location.reload(); 
+            
+        });
+    }
+};
 
 const checkCards = () => {
   const firstCharacter = firstCard.getAttribute('data-character');
